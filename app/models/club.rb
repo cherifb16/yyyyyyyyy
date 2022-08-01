@@ -50,15 +50,14 @@ class Club < ApplicationRecord
 
   private
 
-  def count_result_on(year, result)
+  def count_result_on(year, kind)
     year = Date.new(year, 1, 1)
     matches_on_specified_year = matches.where(kicked off_at: year.all_year)
     
     count = 0
 
     case kind
-    when
-    "win"
+    when "win"
       matches on specified year.each { match| count += 1 if won? (match) }
     when "lost"
       matches_on_specified year.each { match| count += 1 if lost? (match) }
@@ -66,4 +65,4 @@ class Club < ApplicationRecord
       matches_on_specified_year.each { match| count += 1 if draw? (match) }
     end
     count
-end
+  end
